@@ -3,6 +3,7 @@ import {Inject} from 'angular2/core';
 import {GettingStartedPage} from './pages/getting-started/getting-started';
 import {ListPage} from './pages/list/list';
 import {GridPage} from './pages/grid/grid';
+import {TasksPage} from './pages/tasks/tasks';
 
 
 @App({
@@ -20,7 +21,8 @@ class MyApp {
     this.pages = [
       { title: 'Getting Started', component: GettingStartedPage },
       { title: 'List', component: ListPage },
-      { title: 'Grid Icons', component: GridPage }
+      { title: 'Grid Icons', component: GridPage },
+      { title: 'Tasks', component: TasksPage}
     ];
 
     this.rootPage = GettingStartedPage;
