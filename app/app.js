@@ -4,11 +4,15 @@ import {GettingStartedPage} from './pages/getting-started/getting-started';
 import {ListPage} from './pages/list/list';
 import {GridPage} from './pages/grid/grid';
 import {TasksPage} from './pages/tasks/tasks';
+import {TodosPage} from './pages/todos/todos';
+import {TaskService} from './providers/task-service/task-service';
+import {TodoService} from './providers/todo-service/todo-service';
 
 
 @App({
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  providers: [TaskService, TodoService]
 })
 class MyApp {
   constructor(@Inject(IonicApp) app, @Inject(Platform) platform) {
@@ -22,10 +26,11 @@ class MyApp {
       { title: 'Getting Started', component: GettingStartedPage },
       { title: 'List', component: ListPage },
       { title: 'Grid Icons', component: GridPage },
-      { title: 'Tasks', component: TasksPage}
+      { title: 'Tasks', component: TasksPage},
+      { title: 'Todos', component: TodosPage}
     ];
 
-    this.rootPage = GettingStartedPage;
+    this.rootPage = TasksPage;//GettingStartedPage;
   }
 
   initializeApp() {

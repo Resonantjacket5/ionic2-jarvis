@@ -19,12 +19,15 @@
       </ion-input>
       <ion-input type="number" placeholder="Hours" #taskHour>
       </ion-input>
-      <button item-right (click)="addTask(taskText.value, taskHour.value); taskText.value = null; taskHour.value = null;">Add Task</button>
+      <ion-input type="number" placeholder="Deadline" #taskDeadline>
+      </ion-input>
+      <button item-right (click)="addTask(taskText.value, taskHour.value, taskDeadline.value); taskText.value = null; taskHour.value = null; taskDeadline.value=null;">Add Task</button>
     </ion-item>
     <ion-item-sliding *ngFor="#task of tasks">
       <ion-item>
         <h2>{{task.name}}</h2>
         <p>Hours: {{task.length}}</p>
+        <p>Deadline: {{task.deadline}}</p>
       </ion-item>
       <ion-item-options>
         <button danger (click)="removeTask(task)">
@@ -32,5 +35,8 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
+    <button (click)="fetchTasks()">
+      Fetch
+    </button>
   </ion-list>
 </ion-content>

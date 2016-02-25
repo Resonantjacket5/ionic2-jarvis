@@ -1,4 +1,5 @@
 import {Page, NavController} from 'ionic-framework/ionic';
+import {TaskService} from '../../providers/task-service/task-service';
 
 /*
   Generated class for the TasksPage page.
@@ -7,40 +8,27 @@ import {Page, NavController} from 'ionic-framework/ionic';
   Ionic pages and navigation.
 */
 @Page({
-  templateUrl: 'build/pages/tasks/tasks.html',
+  templateUrl: 'build/pages/tasks/tasks.html'
 })
 export class TasksPage {
-  constructor(nav: NavController) {
+  constructor(nav: NavController, ts:TaskService) {
     this.nav = nav;
-    this.tasks = [];
-    this.tasks = [
-      {
-        name: "Walk dogs",
-        length: 5
-      },
-      {
-        name: "Eat chicken",
-        length: 6
-      },
-      {
-        name: "Take Trash",
-        length: 3
-      }
-    ];
+    this.ts = ts;
+    this.tasks = this.ts.getTasks();
     console.log("constructor called");
   }
   
-  addTask(name, length)
+  addTask(name, length, deadline)
   {
-    this.tasks.push({
-      name:name,
-      length:length
-    });
+    this.ts.pushTask(name,length,deadline,1);
+    console.log(this.ts.tasks);
+    //console.log(this.fetchTasks());
   }
   
   removeTask(task)
   {
-    this.tasks.splice(this.tasks.indexOf(task),1); 
+    this.ts.popTask(task);
+    this.fetchTasks();
   }
   
   // handles enters on browser
@@ -49,6 +37,11 @@ export class TasksPage {
       this.addTask($event.target.value, 9);
       $event.target.value = null;
     }
+  }
+  
+  fetchTasks(){
+    this.tasks=this.ts.getTasks(); 
+    return this.ts.getTasks();
   }
 }
 
