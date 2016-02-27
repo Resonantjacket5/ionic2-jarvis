@@ -26,4 +26,7 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
+    <feature name="Calendar">
+        <param name="android-package" value="n1.xservices.plugins.Calendar"/>
+    </feature>
 </widget>

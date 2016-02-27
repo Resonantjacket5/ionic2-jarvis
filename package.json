@@ -15,5 +15,9 @@
     "typescript": "1.7.5"
   },
   "name": "ionic2-jarvis",
-  "description": "ionic2-jarvis: An Ionic project"
+  "description": "ionic2-jarvis: An Ionic project",
+  "cordovaPlatforms": [],
+  "cordovaPlugins": [
+    "cordova-plugin-calendar"
+  ]
 }
