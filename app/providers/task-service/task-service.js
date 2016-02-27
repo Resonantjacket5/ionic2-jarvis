@@ -38,7 +38,8 @@ export class TaskService {
     return this.tasks; 
   }
   
-  pushTask(name,length,deadline){
+  pushTask(name: string,length:number,deadline:number){
+    console.log(typeof(name)+" "typeof(length)+" "+typeof(deadline));
     this.tasks.push({
       name:name,
       length: length,
@@ -50,6 +51,8 @@ export class TaskService {
     if(this.tasks.length!=0)
       this.tasks.splice(this.tasks.indexOf(task),1);
   }
+  
+  
 
   load() {
     if (this.data) {

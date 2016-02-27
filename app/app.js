@@ -30,7 +30,7 @@ class MyApp {
       { title: 'Todos', component: TodosPage}
     ];
 
-    this.rootPage = TasksPage;//GettingStartedPage;
+    this.rootPage = TodosPage;//TasksPage;//GettingStartedPage;
   }
 
   initializeApp() {

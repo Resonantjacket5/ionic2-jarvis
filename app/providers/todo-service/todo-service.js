@@ -21,8 +21,9 @@ export class TodoService {
     return this.taS.getTasks();
   }
   
+  // sort Tasks in ascending (or equal) deadline order
+  
   sortTasks() {
-    console.log("sort TAsks called");
     var tempTasks = this.taS.getTasks();
     tempTasks.sort(function(a,b){
       return a.deadline-b.deadline;
@@ -30,23 +31,34 @@ export class TodoService {
     return tempTasks;
   }
   
+  
   fixTodos() {
-    console.log("fix todos called");
     var tempTodos = this.sortTasks();
     var lastEnd =0;
     for(let i =0; i< tempTodos.length; i++)
     {
       
       tempTodos[i].start = lastEnd;
-      console.log("lastEnd "+lastEnd+" duration "+tempTodos[i].length); 
-      console.log(typeof(lastEnd));
-      // changed into string afterward
-      console.log(typeof(tempTodos[i].length));
       lastEnd = (lastEnd + tempTodos[i].length);
-      console.log("added "+lastEnd);
       tempTodos[i].end = lastEnd;
+      tempTodos[i].isLate = false;
     }
     return tempTodos;
+  }
+  
+  popTodo(todo)
+  {
+    this.todos.pop(todo);
+    this.taS.popTask(this.findTask(todo));
+  }
+  
+  findTask(todo)
+  {
+    function sameName(task)
+    {
+       return task.name === todo.name;
+    }
+    return this.taS.tasks.find(sameName);
   }
   
   /*fixTasks() {

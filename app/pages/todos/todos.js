@@ -11,12 +11,22 @@ import {TodoService} from '../../providers/todo-service/todo-service';
   templateUrl: 'build/pages/todos/todos.html'
 })
 export class TodosPage {
-  constructor(nav: NavController, ts: TaskService, toS: TodoService) {
+  constructor(nav: NavController, taS: TaskService, toS: TodoService) {
     this.nav = nav;
-    this.ts = ts;
+    this.taS = taS;
     this.toS = toS;
-    
+    this.myBool = true;
     this.todos = this.toS.fixTodos(); //this.toS.sortTasks(); //ts.getTasks();
+  }
+  
+  onHiCall()
+  {
+    console.log("hi");
+  }
+  
+  finishedTodo(todo)
+  {
+     this.toS.popTodo(todo);
   }
   
 }

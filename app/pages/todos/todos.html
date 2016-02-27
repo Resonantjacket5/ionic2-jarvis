@@ -8,17 +8,31 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>todos</ion-title>
+  <ion-title>Todos</ion-title>
 </ion-navbar>
 
 <ion-content padding class="todos">
   <ion-list>
-    <ion-item *ngFor="#todo of todos">
-      <h2>{{todo.name}}</h2>
-      <p>Hours: {{todo.length}}</p>
-      <p>Start: {{todo.start}}</p>
-      <p>End:   {{todo.end}}</p>
-      <p>Deadline: {{todo.deadline}}</p>
-    </ion-item>
+    <ion-item-sliding *ngFor="#todo of todos" on-swipe-left="onHiCall()">
+      <ion-item>
+        <div>
+          <h2>{{todo.name}}</h2>
+          <p>Hours: {{todo.length}}</p>
+          <p>Deadline: {{todo.deadline}}</p>
+        </div>
+        <button [color]="isLate ? 'danger': 'secondary'">Late </button>
+        <div item-right>
+          <p> {{todo.isLate}}</p>
+          <p>Start: {{todo.start}}</p>
+          <p>End:   {{todo.end}}</p>
+        </div>
+        
+      </ion-item>
+      <ion-item-options>
+        <button secondary (click)="finishedTodo(todo)">
+          Finished
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

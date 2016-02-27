@@ -18,9 +18,9 @@ export class TasksPage {
     console.log("constructor called");
   }
   
-  addTask(name, length, deadline)
+  addTask(name: string, length, deadline)
   {
-    this.ts.pushTask(name,length,deadline,1);
+    this.ts.pushTask(name,parseInt(length),parseInt(deadline),1);
     console.log(this.ts.tasks);
     //console.log(this.fetchTasks());
   }
